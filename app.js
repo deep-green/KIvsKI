@@ -68,7 +68,7 @@ socket.on('makeMove', data => {
 	console.log("ki1: " + data.FEN);
 	chess = new Chess(data.FEN);
 	board.position(data.FEN, true)
-	sleep(200).then(() => {
+	sleep(300).then(() => {
 		start();
 	});
 	
@@ -77,7 +77,7 @@ socket2.on('makeMove', data => {
     console.log("ki2: " + data.FEN);
 	chess = new Chess(data.FEN);
 	board.position(data.FEN, true)
-	sleep(200).then(() => {
+	sleep(300).then(() => {
 		start();
 	});
 });
@@ -102,12 +102,18 @@ function getallMoves()
 					if(o.includes("+") ||  o.includes("#"))
 					{
 						move = i + o.substr(-3,-1);
-						chessmoves.push(move);
+						if(move.length > 2)
+						{
+							chessmoves.push(move);
+						}	
 					}
 					else
 					{
 						move = i + o.substr(-2);
-						chessmoves.push(move);
+						if(move.length > 2)
+						{
+							chessmoves.push(move);
+						}
 					}
                 }
                 else if(o.length == 3)

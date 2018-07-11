@@ -65,7 +65,7 @@ function start(){
 };
 
 socket.on('makeMove', data => {
-	console.log("ki1" + data.FEN)
+	console.log("ki1: " + data.FEN);
 	chess = new Chess(data.FEN);
 	board.position(data.FEN, true)
 	sleep(200).then(() => {
@@ -74,7 +74,7 @@ socket.on('makeMove', data => {
 	
 });
 socket2.on('makeMove', data => {
-    console.log("ki2" + data.FEN)
+    console.log("ki2: " + data.FEN);
 	chess = new Chess(data.FEN);
 	board.position(data.FEN, true)
 	sleep(200).then(() => {

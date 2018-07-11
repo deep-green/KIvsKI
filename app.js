@@ -65,18 +65,18 @@ function start(){
 };
 
 socket.on('makeMove', data => {
-    console.log("ki1:" + data.Move);
-    chess.move(data.Move, {sloppy: true});
-    board.move(data.Move.substr(0,2) + '-' + data.Move.substr(2,4));
+	console.log("ki1" + data.FEN)
+	chess = new Chess(data.FEN);
+	board.position(data.FEN, true)
 	sleep(200).then(() => {
 		start();
 	});
 	
 });
 socket2.on('makeMove', data => {
-    console.log("ki2:" + data);
-    chess.move(data, {sloppy: true});
-    board.move(data.substr(0,2) + '-' + data.substr(2,4));
+    console.log("ki2" + data.FEN)
+	chess = new Chess(data.FEN);
+	board.position(data.FEN, true)
 	sleep(200).then(() => {
 		start();
 	});
